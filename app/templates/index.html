@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+    {% block title %} Home {% endblock title %}
+
+    {% block header %}
+        <h1>Welcome!</h1>
+        <h4>Go to the Add Contact page and enter your information to be entered into our Willy Wonka Chocolate Factory SWEEPSTAKES!</h4>
+    {% endblock header %}
+
+    {% block content %}
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            {% for image in images %}
+            <div class="carousel-item active">
+                <img src="{{image}}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    {% endblock content %}
