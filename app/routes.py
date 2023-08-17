@@ -65,12 +65,6 @@ def phone():
         last_name = form.last_name.data
         phone_number = form.phone_number.data
         address = form.address.data
-
-        #Check user table to see if there are any users with username or email
-        check_user = db.session.execute(db.select(Contact).where((Contact.phone_number==phone_number) | (Contact.address==address))).scalar()
-        if check_user:
-            print('A user with that Phone number or Address already exists')
-            return redirect((url_for('phone')))
         
         # Create a new instance of the User class with the data from form
         new_contact = Contact(first_name=first_name, last_name=last_name, phone_number=phone_number, address=address, user_id=current_user.id)
