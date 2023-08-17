@@ -13,9 +13,9 @@
 
     {% block content %}
         <div class="row justify-content-center">
-            <div class="col-4">
-              {% if current_user.is_authenticated %}
-                {% for contact in contacts %}
+          {%- if current_user.is_authenticated -%}
+          {%- for contact in contacts -%}
+          <div class="col-4">
                 <div class="card my-3 border-warning text-center" style="background-color: blueviolet;">
                     <div class="row g-0">
                       <div class="col-md-12">
@@ -32,8 +32,8 @@
                       </div>
                     </div>
                 </div>
+              </div>
                 {% endfor %}
                 {% endif %}
-            </div>
         </div>
     {% endblock content %}
