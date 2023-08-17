@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+    {% block title %} Home {% endblock title %}
+
+    {% block header %}
+    <div class="row">
+        <h1>Contacts</h1>
+    </div>
+    <div class="row">
+        <h4>Hello {{ current_user.first_name }}</h4>
+    </div>   
+    {% endblock header %}
+
+    {% block content %}
+        <div class="row justify-content-center">
+            <div class="col-4">
+              {% if current_user.is_authenticated %}
+                {% for contact in contacts %}
+                <div class="card my-3 border-warning text-center" style="background-color: blueviolet;">
+                    <div class="row g-0">
+                      <div class="col-md-12">
+                        <div class="card-body" style="color: rgb(255, 196, 33);">
+                          <h5 class="card-title">{{ contact.first_name }}</h5>
+                          <hr style="width: 380px;">
+                          <p class="card-text">First Name: {{ contact.first_name }}</p>
+                          <p class="card-text">Last Name: {{ contact.last_name }}</p>
+                          <p class="card-text">Phone Number: {{ contact.phone_number }}</p>
+                          <p class="card-text">Address: {{ contact.address }}</p>
+                          <hr style="width: 380px;">
+                          <p class="card-text">{{ contact.date_time.strftime('%A %b %d, %Y at %I:%M%p')}}</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endblock content %}

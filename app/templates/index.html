@@ -4,8 +4,13 @@
 
     {% block header %}
         <h1>Welcome!</h1>
+        {% if current_user.is_authenticated %}
         <h4>Go to the Add Contact page and enter your information to be entered into our Willy Wonka Chocolate Factory SWEEPSTAKES!</h4>
-    {% endblock header %}
+        <h5>Add the contact of someone who might be interested for extra SWEEPSTAKES tickets!</h5>
+        {% else %}
+        <h4>Please Sign Up or Log In to enter the SWEEPSTAKES!!</h4>
+        {% endif %}
+    {% endblock header%}
 
     {% block content %}
     <div id="carouselExample" class="carousel slide">
