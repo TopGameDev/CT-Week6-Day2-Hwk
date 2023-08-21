@@ -19,17 +19,33 @@ This assignment was for practice creating a flask database with a working form t
 For Day 3's homework we had to add Login capabilities and Authentication with the Flask-Login package. This was pretty cool because I got to enhance my knowledge of Routeing, Database Relationships, creating databases, and Creating forms that will then be migrated to our database via the Flask-Migrate packages. I also got some practice with the database querying to only show the added contacts of the currently logged in user. Then I got the chance to get a little more creative and push the narrative of the site a little further.
 
 <hr>
-This is the toolbar when I am Logged In.
+This is the toolbar when I am Logged In. ⬇️
 <hr>
 
 ![LoggedInToolbar](photo_3.jpeg)
 <hr>
-This is the toolbar when I am Logged Out. Along with the Flash messages from the Flask-Flash package.
+This is the toolbar when I am Logged Out. Along with the Flash messages from the Flask-Flash package. ⬇️
 <hr>
 
 ![LoggedOutToolbar](photo_4.jpeg)
 <hr>
-This is the newly created view contacts page that only shows contacts added by the current user logged in.
+This is the newly created view contacts page that only shows contacts added by the current user logged in. ⬇️
 <hr>
 
 ![ViewContacts](photo_5.jpeg)
+<hr>
+
+## :zero::one:Day 4 - Weekend:one::zero:
+<hr>
+
+From Day 4 I was tasked with a weekend assignment to make all of my routes to GET info, PUT info changes into the database, POST new content to the database, and DELETE data from the database through Flask Blueprint Routes using Postman software.
+<hr>
+This is the Edit and Delete Buttons ⬇️
+<hr>
+
+![Edit/Delete](photo_6.jpeg)
+<hr>
+This is the Edit Form with pre-existing data already filled in. ⬇️
+<hr>
+
+![Edit-Contact](photo_7.jpeg)

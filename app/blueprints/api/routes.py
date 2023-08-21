@@ -11,6 +11,7 @@ def get_users():
     return [user.to_dict() for user in users]
 
 @api.route('/user/<user_id>')
+@basic_auth.login_required
 def get_user(user_id):
     user = db.session.get(User, user_id)
     if user:

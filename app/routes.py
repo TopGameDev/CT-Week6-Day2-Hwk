@@ -13,12 +13,14 @@ def index():
     return render_template('index.html', images=images)
 
 @app.route('/contacts')
+@login_required
 def contacts():
     contacts = db.session.execute(db.select(Contact).where(Contact.user_id==current_user.id).order_by(Contact.date_time.desc())).scalars().all()
     return render_template('contacts.html', contacts=contacts)
 
 # Make a route that takes in the ID of the post
 @app.route('/contacts/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
 def edit_contact(id):
     # Query the database to find the single post by its ID
     contact = db.session.execute(db.select(Contact).where(Contact.id==id)).scalar()
@@ -47,6 +49,7 @@ def edit_contact(id):
     return render_template('contact.html', form=form)
 
 @app.route('/contacts/delete/<int:id>', methods=['GET', 'DELETE'])
+@login_required
 def delete_contact(id):
     # Query the database to find the Contact by its ID
     contact = db.session.execute(db.select(Contact).where(Contact.id==id)).scalar()
