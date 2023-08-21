@@ -17,6 +17,48 @@ def contacts():
     contacts = db.session.execute(db.select(Contact).where(Contact.user_id==current_user.id).order_by(Contact.date_time.desc())).scalars().all()
     return render_template('contacts.html', contacts=contacts)
 
+# Make a route that takes in the ID of the post
+@app.route('/contacts/edit/<int:id>', methods=['GET', 'POST'])
+def edit_contact(id):
+    # Query the database to find the single post by its ID
+    contact = db.session.execute(db.select(Contact).where(Contact.id==id)).scalar()
+    # Create an instance of the AddInfoForm so we can make changes through the form
+    form = AddInfoForm()
+    # Check if user has pressed submit
+    if form.validate_on_submit():
+        # Update the content in the database with the data I input in each form field
+        contact.first_name = form.first_name.data
+        contact.last_name = form.last_name.data
+        contact.phone_number = form.phone_number.data
+        contact.address = form.address.data
+        # Add to Database
+        db.session.add(contact)
+        # Update Database
+        db.session.commit()
+        # Send Flash Message
+        flash("Contact has been updated", 'success')
+        # Redirect back to contacts page.
+        return redirect(url_for('contacts', id=contact.id))
+    # Pre-Fillout Form Fields with unchanged data from the database
+    form.first_name.data = contact.first_name
+    form.last_name.data = contact.last_name
+    form.phone_number.data = contact.phone_number
+    form.address.data = contact.address
+    return render_template('contact.html', form=form)
+
+@app.route('/contacts/delete/<int:id>', methods=['GET', 'DELETE'])
+def delete_contact(id):
+    # Query the database to find the Contact by its ID
+    contact = db.session.execute(db.select(Contact).where(Contact.id==id)).scalar()
+    # Delete the contact by ID from the database
+    db.session.delete(contact)
+    # Update Database
+    db.session.commit()
+    # Send Flash Message
+    flash(f'{contact.first_name} {contact.last_name} has been deleted!', 'success')
+    # Redirect back to Contacts page
+    return redirect(url_for('contacts'))
+
 @app.route('/signup', methods=['GET', "POST"])
 def signup():
     form = SignUpForm()
