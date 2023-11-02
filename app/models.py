@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(500), nullable=False, unique=True)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     contact = db.relationship('Contact', backref='author', cascade='delete')
-    token = db.Column(db.String(32), index=True, unique=True)
+    token = db.Column(db.String(100), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
 
     #Hash Password taken from User
