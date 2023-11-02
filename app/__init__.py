@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 
-# Create an instance of the Flask class
+# Create an instance of the Flask class.
 app = Flask(__name__)
 
 # Configure our app with a secret key from the config class
